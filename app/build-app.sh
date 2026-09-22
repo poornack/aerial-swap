@@ -19,7 +19,8 @@ iconutil -c icns "$TMP/AppIcon.iconset" -o "$TMP/AppIcon.icns"
 
 # bundle
 rm -rf "$APP"; mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
-cp "$HERE/../launchd/reapply.sh" "$APP/Contents/MacOS/Aerial Swap"; chmod +x "$APP/Contents/MacOS/Aerial Swap"
+swiftc -O -o "$APP/Contents/MacOS/Aerial Swap" "$HERE/main.swift"
+cp "$HERE/../launchd/reapply.sh" "$APP/Contents/Resources/reapply.sh"; chmod +x "$APP/Contents/Resources/reapply.sh"
 cp "$TMP/AppIcon.icns" "$APP/Contents/Resources/AppIcon.icns"
 cat > "$APP/Contents/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
@@ -38,4 +39,6 @@ cat > "$APP/Contents/Info.plist" <<PLIST
 </dict></plist>
 PLIST
 codesign --force --sign - "$APP" >/dev/null 2>&1 || true
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f "$APP" >/dev/null 2>&1 || true
+touch "$APP"
 echo "$APP"
