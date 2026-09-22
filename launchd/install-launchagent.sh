@@ -5,8 +5,8 @@ set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 mkdir -p ~/Applications
 # remove any old-style agent installed in ~/Library/LaunchAgents
-launchctl bootout gui/$(id -u)/com.poorna.aerialswap 2>/dev/null || true
-rm -f ~/Library/LaunchAgents/com.poorna.aerialswap.plist
+launchctl bootout gui/$(id -u)/com.poorna.wallpaperaerialssync 2>/dev/null || true
+rm -f ~/Library/LaunchAgents/com.poorna.wallpaperaerialssync.plist
 APP="$("$HERE/../app/build-app.sh" ~/Applications)"
 # unregister first: BTM otherwise keeps a stale "legacy agent" record with the generic icon
 "$APP/Contents/MacOS/Wallpaper Aerials Sync" --unregister 2>/dev/null || true

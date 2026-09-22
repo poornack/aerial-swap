@@ -5,7 +5,7 @@ import ServiceManagement
 //   --register    register the bundled LaunchAgent via SMAppService, so Login Items
 //                 shows this app's name and icon instead of a "legacy agent"
 //   --unregister  remove it
-let plist = "com.poorna.aerialswap.plist"
+let plist = "com.poorna.wallpaperaerialssync.plist"
 switch CommandLine.arguments.dropFirst().first {
 case "--register":
     let svc = SMAppService.agent(plistName: plist)

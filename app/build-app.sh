@@ -21,7 +21,7 @@ iconutil -c icns "$TMP/AppIcon.iconset" -o "$TMP/AppIcon.icns"
 rm -rf "$APP"; mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 swiftc -O -framework ServiceManagement -o "$APP/Contents/MacOS/Wallpaper Aerials Sync" "$HERE/main.swift"
 mkdir -p "$APP/Contents/Library/LaunchAgents"
-cp "$HERE/../launchd/com.poorna.aerialswap.plist" "$APP/Contents/Library/LaunchAgents/"
+cp "$HERE/../launchd/com.poorna.wallpaperaerialssync.plist" "$APP/Contents/Library/LaunchAgents/"
 cp "$HERE/../launchd/reapply.sh" "$APP/Contents/Resources/reapply.sh"; chmod +x "$APP/Contents/Resources/reapply.sh"
 cp "$TMP/AppIcon.icns" "$APP/Contents/Resources/AppIcon.icns"
 cat > "$APP/Contents/Info.plist" <<PLIST
@@ -30,7 +30,7 @@ cat > "$APP/Contents/Info.plist" <<PLIST
 <plist version="1.0"><dict>
   <key>CFBundleName</key><string>Wallpaper Aerials Sync</string>
   <key>CFBundleDisplayName</key><string>Wallpaper Aerials Sync</string>
-  <key>CFBundleIdentifier</key><string>com.poorna.aerialswap</string>
+  <key>CFBundleIdentifier</key><string>com.poorna.wallpaperaerialssync</string>
   <key>CFBundleExecutable</key><string>Wallpaper Aerials Sync</string>
   <key>CFBundleIconFile</key><string>AppIcon</string>
   <key>CFBundlePackageType</key><string>APPL</string>
