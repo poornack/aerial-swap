@@ -19,7 +19,9 @@ iconutil -c icns "$TMP/AppIcon.iconset" -o "$TMP/AppIcon.icns"
 
 # bundle
 rm -rf "$APP"; mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
-swiftc -O -o "$APP/Contents/MacOS/Aerial Swap" "$HERE/main.swift"
+swiftc -O -framework ServiceManagement -o "$APP/Contents/MacOS/Aerial Swap" "$HERE/main.swift"
+mkdir -p "$APP/Contents/Library/LaunchAgents"
+cp "$HERE/../launchd/com.poorna.aerialswap.plist" "$APP/Contents/Library/LaunchAgents/"
 cp "$HERE/../launchd/reapply.sh" "$APP/Contents/Resources/reapply.sh"; chmod +x "$APP/Contents/Resources/reapply.sh"
 cp "$TMP/AppIcon.icns" "$APP/Contents/Resources/AppIcon.icns"
 cat > "$APP/Contents/Info.plist" <<PLIST

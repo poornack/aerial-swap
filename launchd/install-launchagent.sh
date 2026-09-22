@@ -1,10 +1,12 @@
 #!/bin/zsh
-# Builds Aerial Swap.app and installs the LaunchAgent so the swap is re-applied at login and hourly.
+# Builds Aerial Swap.app and registers its LaunchAgent through ServiceManagement, so the
+# swap is re-applied at login and hourly, and Login Items shows the app's name and icon.
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
-mkdir -p ~/Library/LaunchAgents ~/Applications
-"$HERE/../app/build-app.sh" ~/Applications
-sed "s|~/Applications|$HOME/Applications|" "$HERE/com.poorna.aerialswap.plist" > ~/Library/LaunchAgents/com.poorna.aerialswap.plist
+mkdir -p ~/Applications
+# remove any old-style agent installed in ~/Library/LaunchAgents
 launchctl bootout gui/$(id -u)/com.poorna.aerialswap 2>/dev/null || true
-launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.poorna.aerialswap.plist
-echo "LaunchAgent installed (shows as 'Aerial Swap' in Login Items)"
+rm -f ~/Library/LaunchAgents/com.poorna.aerialswap.plist
+APP="$("$HERE/../app/build-app.sh" ~/Applications)"
+"$APP/Contents/MacOS/Aerial Swap" --register
+echo "Aerial Swap registered as a login item"
