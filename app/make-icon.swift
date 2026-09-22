@@ -1,5 +1,5 @@
 import AppKit
-// Draws the Aerial Swap icon at the given pixel size and writes a PNG.
+// Draws the Wallpaper Aerials Sync icon at the given pixel size and writes a PNG.
 // usage: make-icon <size> <out.png>
 let size = CGFloat(Int(CommandLine.arguments[1])!)
 let out = URL(fileURLWithPath: CommandLine.arguments[2])

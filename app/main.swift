@@ -1,6 +1,6 @@
 import Foundation
 import ServiceManagement
-// Aerial Swap launcher.
+// Wallpaper Aerials Sync launcher.
 //   (no args)     run the bundled reapply.sh   (what launchd calls)
 //   --register    register the bundled LaunchAgent via SMAppService, so Login Items
 //                 shows this app's name and icon instead of a "legacy agent"

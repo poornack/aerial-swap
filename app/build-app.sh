@@ -1,11 +1,11 @@
 #!/bin/zsh
-# Builds "Aerial Swap.app": a background-only app bundle whose executable is reapply.sh.
+# Builds "Wallpaper Aerials Sync.app": a background-only app bundle whose executable is reapply.sh.
 # Login Items then shows a proper name and icon instead of "zsh".
 # usage: build-app.sh [destination dir]   (default ~/Applications)
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 DEST="${1:-$HOME/Applications}"
-APP="$DEST/Aerial Swap.app"
+APP="$DEST/Wallpaper Aerials Sync.app"
 TMP="$(mktemp -d)"; trap 'rm -rf "$TMP"' EXIT
 
 # icon
@@ -19,7 +19,7 @@ iconutil -c icns "$TMP/AppIcon.iconset" -o "$TMP/AppIcon.icns"
 
 # bundle
 rm -rf "$APP"; mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
-swiftc -O -framework ServiceManagement -o "$APP/Contents/MacOS/Aerial Swap" "$HERE/main.swift"
+swiftc -O -framework ServiceManagement -o "$APP/Contents/MacOS/Wallpaper Aerials Sync" "$HERE/main.swift"
 mkdir -p "$APP/Contents/Library/LaunchAgents"
 cp "$HERE/../launchd/com.poorna.aerialswap.plist" "$APP/Contents/Library/LaunchAgents/"
 cp "$HERE/../launchd/reapply.sh" "$APP/Contents/Resources/reapply.sh"; chmod +x "$APP/Contents/Resources/reapply.sh"
@@ -28,10 +28,10 @@ cat > "$APP/Contents/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
-  <key>CFBundleName</key><string>Aerial Swap</string>
-  <key>CFBundleDisplayName</key><string>Aerial Swap</string>
+  <key>CFBundleName</key><string>Wallpaper Aerials Sync</string>
+  <key>CFBundleDisplayName</key><string>Wallpaper Aerials Sync</string>
   <key>CFBundleIdentifier</key><string>com.poorna.aerialswap</string>
-  <key>CFBundleExecutable</key><string>Aerial Swap</string>
+  <key>CFBundleExecutable</key><string>Wallpaper Aerials Sync</string>
   <key>CFBundleIconFile</key><string>AppIcon</string>
   <key>CFBundlePackageType</key><string>APPL</string>
   <key>CFBundleVersion</key><string>1</string>

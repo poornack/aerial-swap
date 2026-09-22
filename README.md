@@ -51,7 +51,7 @@ to undo.
 | `tools/install-aerial.sh` | Backs up and replaces the Aerial asset, restarts the engine |
 | `tools/list-aerials.sh` | Lists Aerial ids and names from Apple's manifest |
 | `launchd/reapply.sh` | Restores the swap if Apple's original comes back |
-| `app/build-app.sh`, `app/main.swift`, `app/make-icon.swift` | Wrap `reapply.sh` in a background-only `Aerial Swap.app` with a generated icon, so Login Items shows a real name instead of `zsh` |
+| `app/build-app.sh`, `app/main.swift`, `app/make-icon.swift` | Wrap `reapply.sh` in a background-only `Wallpaper Aerials Sync.app` with a generated icon, so Login Items shows a real name instead of `zsh` |
 | `launchd/com.poorna.aerialswap.plist` | LaunchAgent, embedded in the app and registered via `SMAppService` (runs at login and hourly) |
 
 ## Notes
