@@ -3,9 +3,9 @@
 <plist version="1.0"><dict>
   <key>Label</key><string>com.poorna.aerialswap</string>
   <key>ProgramArguments</key><array>
-    <string>/bin/zsh</string>
-    <string>~/Library/Application Support/AerialSwap/reapply.sh</string>
+    <string>~/Applications/Aerial Swap.app/Contents/MacOS/Aerial Swap</string>
   </array>
+  <key>AssociatedBundleIdentifiers</key><string>com.poorna.aerialswap</string>
   <key>RunAtLoad</key><true/>
   <key>StartInterval</key><integer>3600</integer>
 </dict></plist>
