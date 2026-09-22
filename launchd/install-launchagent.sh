@@ -8,5 +8,8 @@ mkdir -p ~/Applications
 launchctl bootout gui/$(id -u)/com.poorna.aerialswap 2>/dev/null || true
 rm -f ~/Library/LaunchAgents/com.poorna.aerialswap.plist
 APP="$("$HERE/../app/build-app.sh" ~/Applications)"
+# unregister first: BTM otherwise keeps a stale "legacy agent" record with the generic icon
+"$APP/Contents/MacOS/Aerial Swap" --unregister 2>/dev/null || true
+sleep 2
 "$APP/Contents/MacOS/Aerial Swap" --register
 echo "Aerial Swap registered as a login item"
