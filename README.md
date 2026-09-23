@@ -1,4 +1,4 @@
-# aerial-swap
+# wallpaper-aerials-sync
 
 Use any video as a native macOS Aerial screen saver, by replacing one of Apple's
 downloaded Aerial assets with a file encoded the way the Aerials engine expects.
